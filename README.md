@@ -1,2 +1,10 @@
-# 80speak
-80speak is an online speech synthesizer based on DECtalk, famously used by Professor Stephen Hawking, The US National Weather Service, Back To The Future Part II, and Benny Benassi.
+# HawkingSays
+
+Based off DecTalk(Hawkings old TTS new is ACAT) to allow
+for Audio to played directly on the mic stream.
+
+## TODO
+
+- Remake Python code completely (Read from passed in text)
+- Allow it to split stream audio into any mic
+- Add a list of songs from Moonbase Alpha to json file to play from
