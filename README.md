@@ -3,6 +3,12 @@
 Based off DecTalk(Hawkings old TTS new is ACAT) to allow
 for Audio to played directly on the mic stream with wine.
 
+## Dependencies
+
+- python3-dev
+- libasound2-lib
+- pyaudio
+
 ## TODO
 
 - Remake exec script:
