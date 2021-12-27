@@ -4,15 +4,7 @@ Based off DecTalk(Hawkings old TTS new is ACAT) to allow
 for Audio to played directly on the mic stream with wine.
 
 ## TODO
-
-- Remake exec script:
-  - Params:
-    1. Input -> Mic list
-    2. Output -> Speaker list
-    3. Text Read (might need additional options for tones)
-
-* PulseAudio `pacmd` redirect output to input of mic
-* Add a list of songs from Moonbase Alpha to json file to play from
+- **PulseAudio Strikes Again** PyGame's music mixer fails to create a virtual Mic since PulseAudio hordes the mic.
 
 ## Licenses
 

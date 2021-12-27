@@ -1,38 +1,21 @@
-#!/usr/bin/env python3
-
+import speech_recognition as s_r
+import subprocess
 import os
-import json
-import traceback
-from pydub import AudioSegment
 
-try:
-    with open("requests.json", "r") as f:
-        reqs = json.loads(f.read())
+# Main script to take the MIC input convert it to text and send it to Dectalk to say it. Missing ability to create a Virtual Mic to be played.
 
-    print("PROCESSING REQUESTS...")
 
-    for item in reqs:
-        phrase = item["phrase"]
-        phrase = '"This is a test of the 80speak python processor! It can run multiple jobs at once, and even output mp3!"'
-        session = item["session"]
-        print("----------------------------------------")
-        print(f"SESSION: {session}")
-        print(f"PHRASE: {phrase}")
-        print("Converting to speech...")
-        try:
-            os.remove(f"/var/www/html/wav/{session}.wav")
-        except:
-            pass
-        command = f"wine say.exe -w /var/www/html/wav/{session}.wav {phrase} &"
-        print(command)
-        os.system(command)
-        print("----------------------------------------")
-        # continue
-        # print("Converting to mp3...")
-        # sound = AudioSegment.from_file(f"/var/www/html/wav/{session}.wav", format="wav")
-        # sound.export(f"/var/www/html/mp3/{session}.mp3", bitrate="32k", format="mp3")
-        # print(f"Deleting original wav...")
-        # os.remove(f"/var/www/html/wav/{session}.wav")
-        # print("DONE!")
-except:
-    traceback.print_exc()
+dectalks_path = "./HawkingSays/dectalk"
+
+r = s_r.Recognizer()
+my_mic = s_r.Microphone() #my device index is 1, you have to put your device index
+with my_mic as source:
+    print("Say now!!!!")
+    r.adjust_for_ambient_noise(source) #reduce noise
+    audio = r.listen(source) #take voice input from the microphone
+
+google_text = r.recognize_google(audio)
+
+print(google_text) #to print voice into text
+os.chdir(dectalks_path) # need to be in same dir for it to work
+subprocess.run(['wine64', 'say.exe', google_text])
