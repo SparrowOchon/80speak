@@ -1,6 +1,6 @@
 # HawkingSays
 
-Based off DecTalk(Hawkings old TTS new is ACAT) to allow
+Based on DecTalk(Hawkings old TTS new is ACAT) to allow
 for Audio to played directly on the mic stream with wine.
 
 ## TODO
